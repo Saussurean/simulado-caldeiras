@@ -2,6 +2,10 @@
     .body, .enunciado, .opt, .btn, .assertiva, .btn-inline {
         font-size: 1.5em;
     }
+
+    body {
+        padding-inline: 0;
+    }
     
     .frase {
         display: flex;
