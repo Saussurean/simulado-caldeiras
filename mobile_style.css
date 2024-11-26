@@ -1,0 +1,26 @@
+@media screen and (max-width: 800px) {
+    .body, .enunciado, .opt, .btn, .assertiva, .btn-inline {
+        font-size: 1.5em;
+    }
+    
+    .frase {
+        display: flex;
+        & .btn-inline, & .assertiva {
+            flex: 1 1 0;
+        }
+
+        .btn-inline {
+            max-width: 15%;
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .container {
+        width: min(80%, 800px);
+    }
+
+    .bloco {
+        max-width: 80%;
+    }
+}
