@@ -1,0 +1,414 @@
+.hidden {
+    display: none !important;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    
+    &.flex-column {
+        justify-items: center;
+        align-content: center;
+    }
+}
+
+ul {
+    display: unset;
+    margin: unset;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding-block: 20px;
+    box-sizing: border-box;
+    background-color: #bfb6b5;
+    font-family: Roboto;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+.questionario {
+    width: min(800px, 80%);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #926692;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgb(0,0,0, .2);
+    padding: 1em;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.questao {
+    border-radius: 25px;
+    padding: 1.5em 2em;
+    background-color: #fff7bc;
+    transition: border .045s, background-color 0.15s;
+}
+
+.bloco, section[id^='section-'] {
+    border-radius: 5px;
+    background-color: rgb(243, 228, 214);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+:is(.bloco, .questao) {
+    margin-block: 1em;
+}
+
+.shadow, .bloco, .questao, .questionario {
+    box-shadow: 0 0 10px rgb(0,0,0, .4);
+}
+
+.btn {
+    --bgfill: #fbc752;
+    --border: color-mix(in srgb, var(--bgfill), red 60%);
+
+    all: unset;
+    background-color: var(--bgfill);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: Arial;
+    border: 5px dashed var(--border);
+    display: inline;
+    margin: 0.2em;
+}
+
+.btn-acertar {
+    --bgfill: #70d569;
+    --border: #128753;
+}
+
+.btn-errar {
+    --border: #5b0505;
+    --bgfill: #eb5959;
+}
+
+.btn, .opt {
+    cursor: pointer;
+
+    &:hover {
+        filter: saturate(150%) brightness(120%);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.resposta, .comentario {
+    background-color: #e1d3e3;
+    color: #390027;
+    font-style: italic;
+    font-weight: bold;
+    font-family: Cambria;
+    border: 5px inset #af7f97;
+    padding: .5em;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 1.5em;
+    text-align: center;
+}
+
+.comentario:empty {
+    display: none;
+}
+
+.enunciado {
+    font-size: 1.2rem;
+    margin-block: .5em;
+    text-align: center;
+}
+
+
+
+.questao {
+    --border: #635028;
+    box-sizing: content-box;
+    border: 5px solid var(--border);
+
+    &.acertou-questao {
+        --border: green;
+        background-color: #78e578;
+
+        & .opt-correta {
+            background-color: var(--border);
+        }
+    }
+
+    &.errou-questao {
+        --border: red;
+        background-color: #ff9a9a;
+
+        & .opt-errada {
+            background-color: var(--border);
+        }
+    }
+}
+
+.opt {
+    text-align: center;
+    background-color: #d5c98f;
+    border-radius: 3px;
+    margin-block: .5em;
+    padding: .7em;
+    transition: border 0.2s;
+}
+
+.lista-opcoes, .lista-frases {
+    width: 100%;
+    list-style: none;
+}
+
+.opt-esquerda {
+}
+
+.opt-direita {
+    background-color: #8b866c;
+}
+
+.opt.binding {
+    animation: waiting 1s alternate infinite ease-in-out;
+}
+
+@keyframes waiting {
+    0% { }
+    50% { filter: brightness(50%); }
+}
+
+.bound-1 {
+    --mycolor: pink;
+    background-color: var(--mycolor);
+    order: -5 !important;
+}
+
+.bound-2 {
+    --mycolor: teal;
+    background-color: var(--mycolor);
+    order: -4 !important;
+}
+
+.bound-3 {
+    --mycolor: brown;
+    background-color: var(--mycolor);
+    order: -3 !important;
+}
+
+.bound-4 {
+    --mycolor: lime;
+    background-color: var(--mycolor);
+    order: -2 !important;
+}
+
+.bound-5 {
+    --mycolor: mediumslateblue;
+    background-color: var(--mycolor);
+    order: -1 !important;
+}
+
+.preencher-colunas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+
+    & .lista-opcoes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+    }
+}
+
+.errou-questao {
+    & .opt {
+        box-sizing: border-box;
+        border-width: 3px;
+        border-color: black;
+    }
+
+    & .lig-1 {
+        border-style: solid;
+    }
+
+    & .lig-2 {
+        border-style: dashed;
+    }
+
+    & .lig-3 {
+        border-style: dotted;
+        border-width: 2px;
+    }
+
+    & .lig-4 {
+        border-style: double;
+    }
+
+    & .lig-5 {
+        border-style: outset;
+    }
+}
+
+.questao::before {
+    content: counter(numero_questao);
+    /* position: absolute; */
+    /* top: -4%; */
+    /* left: auto; */
+    border-radius: 10px;
+    background-color: #000000;
+    padding: 10px;
+    color: white;
+    margin-bottom: .2em;
+    /* display: block; */
+}
+.questionario {
+    counter-reset: numero_questao;
+}
+.questao {
+    counter-increment: numero_questao;
+    position: relative;
+}
+
+.frase {
+    background-color: #d5c98f;
+    margin-bottom: .3em;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.btn-inline {
+    all: unset;
+    background-color: #7f5f40;
+    color: #e1bd84;
+    transition-property: background-color, color;
+    transition-duration: 0.25s;
+    cursor: pointer;
+
+    &:hover, &.checked {
+        background-color: var(--logical-color);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.assertiva {
+    padding: .5em .1em;
+}
+
+.btn-verd {
+    --logical-color: green;
+}
+
+.btn-falso {
+    --logical-color: red;
+}
+
+.btn-prel {
+    --logical-color: brown;
+}
+
+.btn-ope {
+    --logical-color: purple;
+}
+
+.acertou-frase, .errou-frase {
+    &[data-valor="0"] .assertiva.VF {
+        background-color: #ff9a9a;
+    }
+
+    &[data-valor="0"] .assertiva.prelop {
+        background-color: brown;
+    }
+
+    &[data-valor="1"] .assertiva.VF {
+        background-color: #78e578;
+    }
+
+    &[data-valor="1"] .assertiva.prelop {
+        background-color: purple;
+    }
+}
+
+.assertiva {
+    transition: background-color .2s;
+}
+
+.errou-frase {
+    &[data-valor="0"] .btn-inline:first-child, &[data-valor="1"] .btn-inline:last-child {
+        border: 5px solid black;
+        animation: hurt .5s alternate-reverse;
+        animation-iteration-count: 3;
+    }
+}
+
+.acertou-frase {
+    &[data-valor="0"] .btn-inline:first-child, &[data-valor="1"] .btn-inline:last-child {
+        border: 5px solid #fffc35;
+    }
+}
+
+@keyframes hurt {
+    from { }
+    to { background-color: black; }
+}
+
+.separator {
+    border: 10px solid #3e0035;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#overlay:not(.hidden) {
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    backdrop-filter: blur(5px);
+}
+
+#resultado {
+    background-color: #fbc752;
+    border: 5px dashed #ff4c00;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: min(800px, 50%);
+}
+
+.stats {
+    font-weight: bolder;
+    color: #1c0f01;
+    font-size: 35px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #551655;
+    text-decoration: underline;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 800px) {
+    * { display: none; }
+}

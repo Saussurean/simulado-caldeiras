@@ -1,0 +1,634 @@
+<html>
+<head>
+    <title>Simulado</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Import font Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body class="flex-center roboto-medium">
+
+
+<!-- QUESTÕES RAW -->
+<script>
+var Questoes = [];
+
+Questoes.VerdadeiroOuFalso = [{"Enunciado":"A SOLAS requer de cada caldeira a óleo alarme e corte o suprimento de óleo em casos de: água alta, falha de ar e falha de chama.","Valor lógico":"F","Explicação":"O alarme especificado na regra é para água baixa."},{"Enunciado":"Caldeiras aquatubulares para turbinas propulsoras devem estar dotadas de alarme de nível baixo de água.","Valor lógico":"F","Explicação":"Apenas alarme de água alta."},{"Enunciado":"A SOLAS obriga todos aparatos da instalação de máquinas que trabalham sob pressão interna a passarem por um teste de pressão toda vez antes de entrarem em funcionamento em seu primeiro mês.","Valor lógico":"F","Explicação":"A SOLAS especifica o teste de pressão uma vez antes do primeiro funcionamento."},{"Enunciado":"Toda caldeira precisa dispor de no mínimo uma válvula de segurança.","Valor lógico":"F","Explicação":"No mínimo duas."},{"Enunciado":"Todo sistema de vapor essencial ao navio deve possuir pelo menos dois sistemas de alimentação separados com suas respectivas bombas, cada um com sua entrada separada no tubulão de vapor.","Valor lógico":"F","Explicação":"Só uma entrada no tubulão é aceitável."},{"Enunciado":"Toda caldeira essencial à segurança do navio e projetada para um certo nível deve dispor de pelo menos dois indicadores de nível de vidro de leitura direta.","Valor lógico":"F","Explicação":"No mínimo dois indicadores, sendo pelo menos um deles de vidro de leitura direta."},{"Enunciado":"Uma das funções do dreno é evitar martelos hidráulicos.","Valor lógico":"V","Explicação":""},{"Enunciado":"Todos os compartimentos de máquinas contendo qualquer tipo de caldeira devem ser bem ventilados e requerem ventilação constante mesmo à plena potência das máquinas e em mau tempo.","Valor lógico":"F","Explicação":"Esse requisito mais extremo é limitado a caldeiras de categoria A."},{"Enunciado":"A SOLAS requer que sempre haja detetores de princípio de incêndio nos invólucros dos ventiladores/exaustores da caldeira e nos tubulões de ar de lavagem da máquina propulsora.","Valor lógico":"F","Explicação":"Essa é uma regra adicional para praças de máquinas periodicamente desguarnecidas."},{"Enunciado":"Em cada compartimento de caldeiras, ou na entrada fora dele, deve haver pelo menos dois extintores de espuma portáteis.","Valor lógico":"F","Explicação":"Cada compartimento de caldeiras precisa ter 1, e todo compartimento de queima de cada compartimento de caldeira pelo menos 2."},{"Enunciado":"Cada compartimento de queima deve conter pelo menos 100 litros de material seco, como areia ou serragem impregnada de soda cáustica; bem como uma pá para o espalhar.","Valor lógico":"V","Explicação":""},{"Enunciado":"As frentes das caldeiras devem ser protegidas por sistemas fixos de combate a incêndio de aplicação local, sem que haja necessidade de para o motor, evacuar o pessoal ou vedar compartimentos. ","Valor lógico":"V","Explicação":""},{"Enunciado":"A NR que define as regras para todo tipo de caldeira e vaso de pressão é a NR-13.","Valor lógico":"F","Explicação":"As regras da NR-13 não se aplicam a todo tipo de caldeira, pois aquelas com menos de 100 litros não são abrangidas."},{"Enunciado":"A caldeira de categoria B opera em pressões de 60 a 1960 kPa.","Valor lógico":"V","Explicação":""},{"Enunciado":"As caldeiras são categorizadas em A e B, em ordem crescente de sua pressão de trabalho.","Valor lógico":"F","Explicação":"As caldeiras de categoria A têm pressão superior às B. (> 1960kPa)"},{"Enunciado":"O compartimento de caldeiras deve estar afastado pelo menos 3m de quaisquer outras instalações e todo tipo de depósito de combustível.","Valor lógico":"F","Explicação":"Estão excetuados tanques de óleo de partida com menos de 2000 litros."},{"Enunciado":"O operador deve sempre manter a atenção para neutralizar os sistemas de segurança da caldeira o mais rápido possível.","Valor lógico":"F","Explicação":"Neutralizar os sistemas de controle e segurança é proibido e constitui Risco Grave e Iminente."},{"Enunciado":"Apenas as caldeiras tipo A requerem painel de instrumentos instalados em sala de controle.","Valor lógico":"V","Explicação":""},{"Enunciado":"Se um tripulante qualquer não estiver encarregado da operação e controle da caldeira, isso será um Risco Grave e Iminente.","Valor lógico":"F","Explicação":"Apenas um operador de caldeira legalmente certificado pode ter essa função, caso contrário é Risco Grave e Iminente."},{"Enunciado":"O teste hidrostático é obrigatório após intervenções com soldagem/mandrilhamento em partes sob pressão.","Valor lógico":"V","Explicação":""},{"Enunciado":"Os sistemas de controle e segurança da caldeira devem ser submetidos à manutenção corretiva.","Valor lógico":"F","Explicação":"Preventiva ou preditiva, pois eles nunca podem falhar."},{"Enunciado":"Assim que a caldeira completa 25 anos, é necessário fazer uma inspeção imediata e rigorosa de integridade.","Valor lógico":"F","Explicação":"A avaliação rigorosa não é feita apressadamente, mas sim na inspeção subsequente programada."},{"Enunciado":"A inspeção periódica deve ser realizada no segundo ou terceiro aniversário da caldeira, no lugar da inspeção anual.","Valor lógico":"F","Explicação":"A inspeção periódica já tem o prazo máximo (base) de um ano, que pode ser estendido sob certas circunstâncias. A NR-13 não prevê uma inspeção com o nome de \"anual\"."},{"Enunciado":"A Pressão Máxima de Trabalho Permitida (PMTP) deve ser de no máximo a metade da Pressão Máxima de Trabalho Admissível (PMTA).","Valor lógico":"F","Explicação":"Na verdade, os dois nomes se tratam do mesmo conceito."},{"Enunciado":"A placa de identificação da caldeira deve estar fixada em seu corpo em um local acessível, como perto do painel ou na porta de visita.","Valor lógico":"F","Explicação":"A placa de identificação deve ser fixada em local não removível, logo a porta de visita não é uma opção aceita."},{"Enunciado":"As válvulas de segurança devem estar ajustadas para pressão igual ou superior à Pressão Máxima de Trabalho Admissível (PMTA) da caldeira.","Valor lógico":"F","Explicação":"Devem estar ajustadas para pressão superior. Caso a pressão seja igual, há a possibilidade de serem consideradas inexistentes."},{"Enunciado":"Em caso de vazamentos na caldeira, devem-se suspender os tratamentos da água para evitar a remoção de incrustações tampando os vazamentos.","Valor lógico":"F","Explicação":"A caldeira deve ser reparada ou interditada."},{"Enunciado":"O relatório de inspeção deve ser elaborado em até um mês após a inspeção.","Valor lógico":"F","Explicação":"Até dois meses, podendo subir para três em caso de parada geral de manutenção."},{"Enunciado":"O método usado para estabelecer a PMTA da caldeira deve estar listado no documento chamado Prontuário.","Valor lógico":"V","Explicação":""},{"Enunciado":"Se a caldeira for julgada inadequada para operação, ela deverá ser formalmente encerrada, e tal informação deve estar contida no Prontuário.","Valor lógico":"F","Explicação":"O livro onde se documenta isso é o Registro de segurança."},{"Enunciado":"As inspeções, ou seu adiamento, devem ser lançadas no livro do Registro de segurança.","Valor lógico":"V","Explicação":""},{"Enunciado":"É obrigatório lançar as novas condições da caldeira no Registro de segurança tão logo tenha sido publicado o Relatório de inspeção.","Valor lógico":"F","Explicação":"Tão logo tenha sido feita a inspeção, já que o relatório leva de um a três meses para ficar pronto."},{"Enunciado":"Ao comprar ou transferir uma caldeira usada, deve-se elaborar novamente o Prontuário e seus Projetos de Alteração e Reparo.","Valor lógico":"F","Explicação":"Esses documentos, bem como os Relatórios de inspeção, acompanham a caldeira em casos de venda ou transferência."},{"Enunciado":"A placa de identificação da caldeira não deve ser removida ou trocada.","Valor lógico":"F","Explicação":"Ela deve ser trocada sempre que houver mudança na PMTA determinada por inspeção, refletindo o novo valor."},{"Enunciado":"A MARPOL não proíbe o alijamento e lançamento de substâncias nocivas para pesquisa anti-poluição e para exploração mineral.","Valor lógico":"V","Explicação":""},{"Enunciado":"Navios de guerra também devem seguir a MARPOL.","Valor lógico":"F","Explicação":"Não seguem, mas podem ser autuados por conduta irrazoável."},{"Enunciado":"Relatórios de descarga devem obrigatoriamente ser produzidos tanto em caso de descarga real (acidentes) quanto descarga provável (incidentes).","Valor lógico":"V","Explicação":""},{"Enunciado":"O comandante tem obrigação de relatar acontecimentos com descarga de substâncias nocivas ao mar, exceto em caso de abandono.","Valor lógico":"F","Explicação":"Em caso de abandono, o relatório terá de ser feito por alguma entidade: armador, afretador etc."},{"Enunciado":"O relatório de incidente com substância nociva deve ser informado pelo canal mais rápido para a estação costeira mais próxima.","Valor lógico":"V","Explicação":""},{"Enunciado":"A MARPOL prevê apenas três tipos de vistorias para os navios: inicial, periódica e intermediárias.","Valor lógico":"V","Explicação":""},{"Enunciado":"As vistorias periódicas previstas pela MARPOL devem ser feitas em no máximo 30 meses.","Valor lógico":"F","Explicação":"As vistorias intermediárias têm um prazo máximo de 30 meses (2.5 ano). As vistorias periódicas têm o dobro, ou seja, no máximo de cinco em cinco anos."},{"Enunciado":"A duração máxima do certificado IOPP é de dois anos e meio.","Valor lógico":"F","Explicação":"Cinco anos."},{"Enunciado":"Todo navio com AB superior a 400 deve ter tanques para receber óleos não tratáveis resultantes de purificação, lubrificação, vazamentos etc.","Valor lógico":"V","Explicação":""},{"Enunciado":"A descarga de óleo ou mistura oleosa no mar é inexoravelmente proibida.","Valor lógico":"F","Explicação":"Algumas situações podem permitir tal descarga."},{"Enunciado":"A descarga de óleo é permitida a navios em rota, desde que filtrada a mistura com concentração inferior a 150ppm.","Valor lógico":"F","Explicação":"15ppm."},{"Enunciado":"Todo navio com AB superior a 400 deve ter sistema de parada automática de descarga e alarme, para quando a concentração de óleo superar 15 ppm.","Valor lógico":"F","Explicação":"Só se aplica a navios com AB >= 10 mil."},{"Enunciado":"Todo navio com mais de 400 AB, e todo navio petroleiro com mais de 150 AB, deve ter o livro de registro de óleo partes I (operações em praça de máquinas) e II (operações de carga e lastro).","Valor lógico":"F","Explicação":"O livro parte II só se aplica a navios petroleiros."},{"Enunciado":"As regras do anexo VI da Marpol se aplicam, salvo pequenas exceções, a todo e qualquer navio.","Valor lógico":"V","Explicação":"Anexo VI - Prevenção da poluição do ar."},{"Enunciado":"As emissões por motores diesel estão tipificadas no SOx Technical Code, este contendo limites de emissão de óxidos de enxofre.","Valor lógico":"F","Explicação":"NOx Technical Code - Emissão de óxidos de nitrogênio."},{"Enunciado":"O anexo VI da Marpol prevê as inspeções: inicial, de renovação, intermediária, anual e adicional.","Valor lógico":"V","Explicação":""},{"Enunciado":"A inspeção intermediária prevista pelo anexo VI da Marpol subsittui a inspeção de renovação.","Valor lógico":"F","Explicação":"Substitui a inspeção anual."},{"Enunciado":"Os navios serão responsabilizados por poluição do ar, mesmo em casos involuntários resultantes de dano ao navio ou equipamento.","Valor lógico":"F","Explicação":"Isso contará como exceção à regra, contanto que a tripulação tenha tentado evitar a emissão e não tenha havido imprudência."},{"Enunciado":"Emissões poluentes ao ar estão permitidas se necessário para assegurar a segurança do navio ou da vida humana no mar.","Valor lógico":"V","Explicação":""},{"Enunciado":"Estão proibidas substâncias depressoras de ozônio e novas instalações as contendo, nem mesmo sendo permitido o uso de equipamentos que já as continham.","Valor lógico":"V","Explicação":""},{"Enunciado":"O teor máximo de enxofre no óleo combustível é de 15ppm","Valor lógico":"F","Explicação":"O teor máximo é de 0.5% m/m (massa por massa)"},{"Enunciado":"Nas Áreas Especiais da Marpol, o teor máximo de enxofre no óleo combustível é reduzido em 5x.","Valor lógico":"V","Explicação":"De 0.5% m/m para 0.1% m/m"},{"Enunciado":"Quanto maior a rotação (RPM) de um motor diesel, mais alto é o limite máximo de emissões de óxidos de nitrogênio.","Valor lógico":"F","Explicação":"Quanto maior o RPM, menor o limite máximo."},{"Enunciado":"Não se deve fazer extração de fundo ou superfície com a caldeira fria e sem pressão.","Valor lógico":"V","Explicação":""},{"Enunciado":"Após o fim do mandrilhamento de tubos, deve-se fazer o teste de descontinuidade por líquido penetrante a fim de detectar vazamentos.","Valor lógico":"F","Explicação":"Faz-se o teste hidrostático."},{"Enunciado":"Os tubos reservas da caldeira devem ser inspecionados mensalmente à procura de corrosão.","Valor lógico":"F","Explicação":"Anualmente."},{"Enunciado":"O cálculo de rendimento térmico por balanço direto consiste em computar a perda relativa de energia.","Valor lógico":"F","Explicação":"Esse é o balanço indireto."},{"Enunciado":"O cálculo de rendimento térmico por balanço indireto é mais confiável que o cálculo por balanço direto.","Valor lógico":"V","Explicação":""},{"Enunciado":"O cálculo de rendimento térmico por balanço direto consiste em computar o rendimento bruto, ou seja, quanto da energia disponível foi utilizada.","Valor lógico":"V","Explicação":""},{"Enunciado":"A combustão incompleta decorre de queimadores e fornalhas mal projetados ou mal operados.","Valor lógico":"V","Explicação":""},{"Enunciado":"Os sulfatos de cálcio e magnésio incrustam o interior dos tubos mais distantes da fornalha.","Valor lógico":"F","Explicação":"Os tubos mais próximos, pois são ativadas pelo calor."},{"Enunciado":"O cloreto de sódio geralmente incrusta o economizador.","Valor lógico":"F","Explicação":"Geralmente incrusta o superaquecedor."},{"Enunciado":"O cloreto de sódio pode causar arrastamento.","Valor lógico":"V","Explicação":""},{"Enunciado":"Em caso de interrupção de chama dos queimadores por falta de combustível, deve-se fechar o suprimento de ar e combustível.","Valor lógico":"F","Explicação":"Fecha-se apenas o suprimento de combustível mas não o de ar, pois é necessário ventilar a caldeira antes de tentar acendê-la novamente."},{"Enunciado":"Se o acendimento do queimador não for feito com sucesso, deve-se a cada tentativa fazer outra purga ventilando a fornalha por cinco minutos.","Valor lógico":"F","Explicação":"Faz-se a cada duas vezes sem sucesso."}];
+
+Questoes.MultiplaEscolha = [{"Enunciado":"De cujo item abaixo a presença não configura um espaço de máquinas categoria A?","Resposta":"Caldeiras elétricas","Comentário":"","a":"MCI para propulsão","b":"MCI não propulsor com mais de 375kW de potência","c":"Caldeiras a óleo","d":"Unidades de óleo combustível"},{"Enunciado":"Se uma canalização de vapor for suscetível a pressão superior à de projeto, deve conter três itens segundo a SOLAS. São eles:","Resposta":"Válvula redutora, válvula de segurança e manômetro","Comentário":"","a":"Válvula redutora, válvula de segurança e pressostato","b":"Válvula garganta, válvula de segurança e manômetro","c":"Válvula garganta, válvula redutora e manômetro","d":"Válvula de segurança, dreno e manômetro."},{"Enunciado":"Qual das opções abaixo não apresenta nenhum sistema fixo permitido para extinção de incêndio considerado em categorias A com caldeiras que queimam óleo combustível?","Resposta":"Extinção com Halon e Extinção a perfluorocarbonatos","Comentário":"","a":"Extinção a espuma e Extinção a gás","b":"Extinção a Halon e Extinção a borrifo de água","c":"Extinção a gás e Extinção a perfluorocarbonatos","d":"Extinção a borrifo de água e Extinção a gás"},{"Enunciado":"Escolha a afirmativa que nem sempre constituirá risco grave e iminente na Casa de Caldeiras","Resposta":"Não estar afastada pelo menos 5m de outras instalações","Comentário":"","a":"Não possuir sensor de vazamento","b":"Possuir apenas uma saída desobstruída","c":"Não ter luz de emergência","d":"Ser também usada para outra finalidade"},{"Enunciado":"Constitui risco grave e iminente à caldeira, exceto:","Resposta":"Não apresentar sistema de demarragem","Comentário":"","a":"Não possuir válvula de segurança","b":"Não possuir indicador de pressão do vapor","c":"Não apresentar sistema de controle automático de nível com intertravamento","d":"Operar a caldeira fora das condições de projeto"},{"Enunciado":"Qual das ocasiões abaixo não determina a necessidade de uma inspeção extraordinária?","Resposta":"Ao completar 25 anos de operação","Comentário":"","a":"Seis meses de inatividade","b":"Alterações ou reparos importantes","c":"Mudança de local de instalação","d":"Incidentes comprometedores à segurança"},{"Enunciado":"Qual prazo máximo abaixo não condiz com o previsto para a inspeção periódica segundo a NR-13?","Resposta":"Até dois anos para caldeiras tipo A, quando há serviço próprio de inspeção de equipamentos","Comentário":"Um ano e meio para caldeiras tipo A com Sistema Instrumentado de Segurança, em havendo serviço próprio de inspeção de equipamentos.","a":"Até dois anos para caldeiras tipo A que já tiveram teste nas válvulas de segurança","b":"Até um ano e meio para caldeiras tipo B com sistema de gerenciamento de combustão","c":"Até dois anos para caldeiras do tipo B, quando há serviço próprio de inspeção de equipamentos","d":"Até dois anos para caldeiras tipo A com Sistema Instrumentado de Segurança"},{"Enunciado":"Qual informação abaixo é a única verdadeira sobre a inspeção das válvulas de segurança das caldeiras?","Resposta":"Caldeiras tipo B de água tratada  devem ser testadas com o acionamento manual da alavanca, porém sem prazo definido pela norma, sendo a critério do fabricante.","Comentário":"Tipo B de água tratada: a critério do fabricante  Tipo B de água não tratada: mensalmente  Todas: não superior ao prazo de inspeção periódica","a":"Todas as válvulas de segurança devem ser testadas pelo menos anualmente.","b":"Caldeiras tipo B de água não tratada devem ser testadas com o acionamento manual da alavanca pelo menos anualmente.","c":"As válvulas de segurança devem ser testadas em prazo não inferior ao prazo da inspeção periódica das caldeiras que protegem.","d":"Caldeiras tipo A devem ser testadas pelo menos mensalmente."},{"Enunciado":"Qual dos dados abaixo está previsto para estar fora da placa de identificação da caldeira, em outro local visível?","Resposta":"Sua categoria","Comentário":"E também o número de identificação.","a":"Sua pressão máxima de trabalho admissível","b":"O nome do fabricante","c":"A sua capacidade de vapor","d":"Seu ano de fabricação"},{"Enunciado":"Toda caldeira deve possuir no estabelecimento em que está instalada as seguintes documentaçes. Assinale a alternativa com exatamente um item incorreto:","Resposta":"Manual de operação avançada e Projeto de alteração e reparo","Comentário":"\"Manual de operação avançada\" não é um documento oficial previsto.","a":"Projeto de instalação, Projeto de alteração e reparo e Registro de segurança","b":"Relatórios de inspeção e Certificados de inspeção e Teste dos dispositivos de segurança","c":"Manual de operação avançada e Prontuário","d":"Prontuário e Registro de segurança"},{"Enunciado":"Para qual das situações abaixo a MARPOL não obriga a feitura de um relatório de incidente?","Resposta":"Descarga com nível de salinidade acima do permitido","Comentário":"","a":"Descarga excessiva","b":"Descarga com mais óleo ou substância nociva que o permitido","c":"Descarga de substâncias perigosas em embalagens","d":"Descarga com danos ao navio"},{"Enunciado":"Qual das alternativas não contém áreas previstas como especiais sob a MARPOL?","Resposta":"Mar Egeu e Mar Cáspio","Comentário":"","a":"Golfo de Aden, Golfo de Omã e Ára do Golfo Pérsico","b":"Mar Mediterrâneo","c":"Mar Báltico, Mar Negro e Mar Vermelho","d":"Águas a noroeste da Europa"},{"Enunciado":"Qual das operações abaixo não requer o preenchimento do livro de registro de óleo?","Resposta":"Limpeza do tanque de observação","Comentário":"","a":"Lastreamento ou limpeza de tanque de óleo combustível","b":"Descarga de lastro sujo ou água de limpeza de tanque","c":"Descarga pelo costado ","d":"Recebimento de resíduos ou óleo a granel"},{"Enunciado":"Qual das inspeções previstas pelo Anexo VI da Marpol está com a descrição incorreta?","Resposta":"Intermediária: Substitui a terceira ou quarta anuais.","Comentário":"A intermediária substitui a segunda ou terceira anuais.","a":"Renovação: Em intervalos de no máximo cinco anos.","b":"Inicial: Antes de entrar em operação.","c":"Anual: A cada aniversário, ou a até três meses dessa data.","d":"Adicional: Após reparos ou reformas significativas."},{"Enunciado":"Assinale a alternativa contendo um tipo de motor ao qual as regulamentações de emissão de óxido de nitrogênio são aplicável:","Resposta":"Motores que sofreram aumento de potência de mais de 10%","Comentário":"","a":"Motores de emergência","b":"Motores de embarcações de salvatagem","c":"Motores de embarcações offshore não internacionais instalados antes da entrada em vigor das regras","d":"Motores que só operem nas águas da nação cuja bandeira o navio arvora"},{"Enunciado":"As alternativas são todas características proibidas ao óleo combustível para combustão, segundo o anexo VI da Marpol. Assinale a única alternativa que em vez disso contém um requisito:","Resposta":"Conter hidrocarbonetos derivados do petróleo","Comentário":"","a":"Conter ácidos inorgânicos","b":"Ter no mínimo 5% m/m de enxofre.","c":"Conter resíduos de refinaria.","d":"Conter metais pesados."},{"Enunciado":"Qual é a pressão usada como base para o teste hidrostático?","Resposta":"150% da PMTA","Comentário":"","a":"125% da PMTA","b":"200% da PMTA","c":"50% da PMTA","d":"75% da PMTA"},{"Enunciado":"Qual é a pressão usada como base para o teste hidrostático após reparo de deformações de teste anterior?","Resposta":"125% da PMTA","Comentário":"","a":"150% da PMTA","b":"200% da PMTA","c":"50% da PMTA","d":"75% da PMTA"},{"Enunciado":"O teste hidrostático da caldeira é feito a cada:","Resposta":"5 anos","Comentário":"","a":"2 anos e meio","b":"1 ano","c":"2 ou 3 anos, junto à inspeção periódica","d":"6 meses"},{"Enunciado":"Durante o teste das válvulas de segurança, a tolerância para a divergência no valor de abertura da válvula em relação ao descrito é de:","Resposta":"± 1 kgf/cm²","Comentário":"","a":"± 2kgf/cm²","b":"± 0.5kgf/cm²","c":"± 0.1 kgf/cm²","d":"Não são tolerados desvios."},{"Enunciado":"O método de inspeção para controle da qualidade da solda de partes sob pressão da caldeira é:","Resposta":"Radiografia","Comentário":"","a":"Ultrassom","b":"Líquido penetrante","c":"Teste hidrostático","d":"Teste metalográfico"},{"Enunciado":"Assinale a alternative contendo os alarmes da caldeira que devem ser testados diariamente pelo CHEMAQ:","Resposta":"Todas as alternativas.","Comentário":"","a":"Alarmes de nível alto e baixo.","b":"Alarme de baixa pressão de óleo combustível e de ar da fornalha.","c":"Alarme de falha do ventilador de tiragem forçada.","d":"Nenhuma alternativa, pois o teste dos alarmes citados deve ser feito diariamente."},{"Enunciado":"Assinale a alternativa apresentando um local onde é aplicável o teste metalográfico.","Resposta":"Todas as alternativas.","Comentário":"","a":"Locais com incidência apreciável de trincas.","b":"Tubos da fornalha.","c":"Portas de ar de combustão.","d":"Aberturas da fornalha baixa."},{"Enunciado":"Escolha a alternativa que não contém uma causa de espuma na água:","Resposta":"Baixa concentração de sólidos dissolvidos","Comentário":"","a":"Óxido de ferro oriundo da corrosão dos tubos","b":"Alcalinidade alta","c":"Óleo na água de alimentação","d":"Matéria orgânica na água de alimentação"},{"Enunciado":"Escolha a alternativa que não contém uma consequência do arrastamento:","Resposta":"Água alta no tubulão de vapor.","Comentário":"Essa é uma causa.","a":"Depósitos nas linhas de vapor e separadores","b":"Incrustações no superaquecedor","c":"Choques térmicos nos aquecedores","d":"Choques mecânicos nas turbinas"},{"Enunciado":"Na lista abaixo há um conceito repetido, existindo dois termos para ele. Selecione o termo repetido associado ao maior número:","Resposta":"3 - Espuma","Comentário":"","a":"1 - Foaming","b":"2 - Arrastamento","c":"4 - Projeção","d":"5 - Priming"},{"Enunciado":"Assinale a alternativa contendo um hidrocarboneto líquido.","Resposta":"Pentano","Comentário":"","a":"Metano","b":"Etano","c":"Propano","d":"Butano"},{"Enunciado":"O nome dado ao valor aproveitável da energia liberada pelo combustível na hora da combustão é:","Resposta":"Poder calorífico inferior","Comentário":"Calor disponível é a energia introduzida na instalação para produção do vapor, sendo a soma do poder calorífico ao calor sensível, bem como outros valores.  Calor útil é a quantidade de energia absorvida pelo fluido de trabalho (água).","a":"Poder calorífico superior","b":"Calor sensível do combustível","c":"Calor disponível","d":"Calor útil"},{"Enunciado":"Qual das formas de prevenção do retrocesso de chama apresentadas abaixo está parcialmente incorreta?","Resposta":"Ventilar a fornalha por 10 minutos sempre que a caldeira apagar","Comentário":"","a":"Não reacender a caldeira com calor residual dos tijolos refratários","b":"Não abrir a boca da fornalha bruscamente","c":"Manter a vedação das válvulas em bom estado","d":"Prevenir acúmulos de óleo"}];
+
+Questoes.Pergunta = [{"Enunciado":"Por que existe o conceito de excesso de ar como uma razão entre as quantidades de ar teórico e efetivo?","Resposta":"Pois as quantidades de gases de cada tipo na atmosfera não são exatamente previsíveis. Assim, precisa-se de um \"excesso\" de ar para ter certeza de que esse ar terá o mínimo de oxigênio necessário para a reação estequiométrica."},{"Enunciado":"Por que o baixo excesso de ar causa perdas energéticas?","Resposta":"Pois com menos oxigênio disponibilizado, desperdiça-se o potencial de reação de combustão ditado pela estequiometria."},{"Enunciado":"Por que o alto excesso de ar causa perdas de calor?","Resposta":"Pois a ventilação excessiva de ar expulsa mais rapidamente os gases da combustão pela chaminé, diminuindo o tempo de troca de calor com os tubos."},{"Enunciado":"Como o operador de caldeiras pode interferir no rendimento térmico e reduzir as perdas térmicas, permitindo um uso mais eficiente do combustível?","Resposta":"Por exemplo, ajustando a vazão de ar e combustível no queimador."},{"Enunciado":"Por que minimizar a temperatura de saída dos gases da chaminé é uma maneira viável de reduzir as perdas de calor?","Resposta":"Pois uma temperatura menor de saída dos gases quer dizer que o seu calor sensível foi melhor aproveitado dentro da caldeira."},{"Enunciado":"Que medidas podem ser tomadas para aproveitar o calor dos gases de saída da chaminé?","Resposta":"Adicionar recuperadores de calor, ou seja: o pré-aquecedor de ar e o economizador para a água."},{"Enunciado":"O que se deve fazer com o coeficiente de excesso de ar, de forma a minimizar as perdas de calor por gases da chaminé?","Resposta":"No queimador, minimizar o excesso de ar até o limite do possível (sem causar baixo excesso de ar)."},{"Enunciado":"Que procedimento deve tomar o operador ao perceber fumaça e chama esbranquiçadas?","Resposta":"Para resolver o excesso excessivo de ar, deve-se reduzir a vazão de ar até a fumaça ficar negra, e só então ir aumentando. O ponto correto será a fumaça cinza-azulada."},{"Enunciado":"O que se deve fazer após remendar o cone do queimador com barro refratário?","Resposta":"Acende-se a caldeira em alta temperatura um dia depois para cozê-lo, ciclando os queimadores de quinze em quinze minutos por seis horas, com o menor pulverizador possível."},{"Enunciado":"Qual é o procedimento para assentar tijolos na parede da caldeira?","Resposta":"Após macetar o tijolo na parede, deixa-so secar por meio dia antes de acender a caldeira para o endurecer."},{"Enunciado":"Como a presença de óleo na água pode reduzir a resistência térmica?","Resposta":"Ele pode formar um filme protetor na superfície dos tubos que dificulta a troca de calor."},{"Enunciado":"O que o cloreto de sódio, sulfatos de cálcio e magnésio têm em comum?","Resposta":"São elementos incrustadores na água."},{"Enunciado":"Como as incrustações podem contribuir para a torra dos tubos?","Resposta":"Elas dificultam não só a admissão, mas também o despejo do calor dos tubos."},{"Enunciado":"Qual é um erro crasso que não deve ser cometido ao perceber água baixa? Qual a consequência se isso acontecer?","Resposta":"Tentar aumentar a alimentação sem antes verificar se a queda não foi causada por nível baixo. Pode causar explosões."},{"Enunciado":"Como se reage a emergências de água baixa?","Resposta":"Apagar e isolar a caldeira e deixá-la fora de serviço até corrigir a fonte do defeito."},{"Enunciado":"Como se reage a emergências de água alta?","Resposta":"Apagar e isolar a caldeira e dar extrações de superfície."},{"Enunciado":"Como se reage a emergências de vazamento dos tubos internos?","Resposta":"Resolver a água baixa, se houver. Senão, esfriar a caldeira com água e ventilar seu interior para expulsar os vapores vazados."},{"Enunciado":"Como se reage a emergências de avaria no ventilador?","Resposta":"\"Reiniciar a caldeira\": Depois de apagada e isolada, religar o ventilador, dar ramonagem no pré-aquecedor e reacender os queimadores um por um."},{"Enunciado":"Por que o retrocesso de chama ocorre?","Resposta":"Quando ele ocorre, quer dizer que a pressão da fornalha é maior que a pressão externa, emprurando a chama de volta pela tubulação do queimador, podendo causar explosões."},{"Enunciado":"O que se faz ao detectar que as válvulas de segurança estão disparando constantemente?","Resposta":"Reapertar a porca de regulagem ou, se a válvula estiver presa, apagar a caldeira e retirar a válvula para reparo."},{"Enunciado":"Como se repara vazamento em um trecho da tubulação fora da caldeira?","Resposta":"Retira-se o isolamento, solda-se a parte vazando e recoloca-se o isolamento."}];
+
+Questoes.Cite = [{"Enunciado":"Cite os dois tipos de cimento usados para assentar tijolos no refratário","Resposta":"Os secantes a calor e os secantes a ar"},{"Enunciado":"Cite o método que se usa preferencialmente para limpar o economizador e superaquecedor","Resposta":"Limpeza mecânica"},{"Enunciado":"Cite o procedimento usado na limpeza mecânica","Resposta":"Usa-se uma escova giratória motorizada para limpar o interior dos tubos"},{"Enunciado":"Cite as ocasiões em que a barrela é usada na caldeira","Resposta":"Antes do primeiro uso, depois de reparos e depois de contaminações com óleo nos tubos"},{"Enunciado":"Cite o procedimento de limpeza usado para remover incrustações","Resposta":"Limpeza química (barrela)"},{"Enunciado":"Cite a faixa de duração do procedimento de barrela e que critério é usado","Resposta":"De 12 a 48 horas, a depender do grau de contaminação por óleo ou deposição de lama"},{"Enunciado":"Cite o que deve ser feito se a barrela não for suficiente para descontaminar a caldeira","Resposta":"Deve-se fazer uma nova barrela com a mesma duração da anterior"},{"Enunciado":"Cite em termos gerais como funciona a limpeza química","Resposta":"Acende-se a caldeira misturando-se produto químico à água quente, logo após esvazia-se a caldeira e lava-se os tubos com água pressurizada."},{"Enunciado":"Cite em qual direção/sentido é feita a lavagem dos tubos da fornalha","Resposta":"Lavam-se os feixos tubulares de cima para baixo."},{"Enunciado":"Cite quais tubos devem ser evitados durante a lavagem da fornalha","Resposta":"Os tubos da parede d'água e do fundo."},{"Enunciado":"Cite os dois métodos usados para conservar a caldeira fora de serviço, e qual é preferível por ser mais simples","Resposta":"Caldeira totalmente cheia (preferível) ou totalmente vazia."},{"Enunciado":"Cite o procedimento para conservar a caldeira totalmente vazia","Resposta":"Esvazia-se a caldeira ainda quente e ventila-se a fornalha até estar totalmente seca."},{"Enunciado":"Cite as práticas costumeiras para absorver umidade na fornalha e nos tubulões, ao conservar a caldeira vazia","Resposta":"Na fornalha se faz uma pequena fogueira. Nos tubulões coloca-se cal virgem."},{"Enunciado":"Cite as possíveis causas de avaria na parede refratária","Resposta":"Calor excessivo da combustão ou mau assentamento dos tijolos"},{"Enunciado":"Cite as partes cuja avaria possivelmente causará escapamento de gases da caldeira para a praça de máquinas","Resposta":"Selo dos ramonadores e invólucro da caldeira."},{"Enunciado":"Cite a duração do estado de sobrepressão da caldeira durante o teste hidrostático.","Resposta":"Meia hora."},{"Enunciado":"Cite o limite máximo de queda de pressão da caldeira após um dia de acendimento, durante o teste hidrostático.","Resposta":"Não pode cair mais de dez por cento."},{"Enunciado":"Cite o propósito da realização do teste hidrostático:","Resposta":"Encontrar vazamentos ou baixa resistência mecânica"},{"Enunciado":"Cite a atualização de valor que a PMTA da caldeira sofre caso não passe no teste hidrostático","Resposta":"A nova PMTA será 2/3 da pressão que começou a causar deformações."},{"Enunciado":"Cite a ordem de teste anual das válvulas de segurança:","Resposta":"Começa-se testando a válvula de maior pressão, travando-se as demais, até a de menor pressão."},{"Enunciado":"Cite como deve ser o disparo ideal das válvulas de segurança perante seu teste anual:","Resposta":"Disparo único, sem batimento, trepidação ou vazamentos."},{"Enunciado":"Cite o que acontece se a válvula de segurança tiver de ser disparada mais de 5 vezes seguidas, durante o seu teste anual:","Resposta":"A nova tentativa deverá ser feita somente após seis horas."},{"Enunciado":"Cite como é feito o teste metalográfico em caldeiras:","Resposta":"Retira-se uma amostra dos tubos, enviado para análise em laboratório à procura de falhas estruturais."},{"Enunciado":"Cite o que deve e o que não deve ser feito ao encontrar trincas no alojamento do queimador durante sua manutenção:","Resposta":"Nesse caso, deve-se substituir o queimador, e não tentar soldá-lo."},{"Enunciado":"Cite a medida que pode remediar a formação de espuma na caldeira:","Resposta":"A extração de superfície."},{"Enunciado":"Cite o nome dado ao fenômeno de arrastamento severo:","Resposta":"Projeção."},{"Enunciado":"Cite o método usado para retirar as impurezas mais densas da água:","Resposta":"A extração de fundo."},{"Enunciado":"Cite a porcentagem máxima dos tubos que podem ser bujonados antes de ter de substituir a caldeira:","Resposta":"Até 10% dos tubos."},{"Enunciado":"Cite o nome dos dois métodos estudados para remover/substituir tubos defeituosos.","Resposta":"Bujonamento e mandrilhamento."},{"Enunciado":"Cite como funciona o bujonamento de tubos:","Resposta":"Colocam-se tampões nas extremidades dos tubos para que, na ausência de água em seu interior, o calor da fornalha o derreta."},{"Enunciado":"Cite como é feita a substituição de tubos por mandrilhamento:","Resposta":"Posiciona-se o novo tubo nos orifícios do tubulão superior e inferior, e então coloca-se um mandril por dentro, que se expandirá, cravando o tubo dentro dos orifícios."},{"Enunciado":"Cite a porcentagem recomendada (valor inteiro) para o coeficiente de excesso de ar:","Resposta":"Cerca de 1%"},{"Enunciado":"Cite os três fatores que determinam uso eficiente do combustível, no que se trata de seu rendimento térmico:","Resposta":"Combustão completa, máxima transferência de calor e mínimas perdas de calor."},{"Enunciado":"Cite os dois métodos para cálculo do rendimento térmico:","Resposta":"Balanço direto e balanço indireto."},{"Enunciado":"Cite um método nem sempre possível para minimizar a temperatura de saída dos gases da chaminé:","Resposta":"Aumentar a área de troca de calor."},{"Enunciado":"Cite os dois elementos que compõem as perdas térmicas dos gases da chaminé:","Resposta":"Perda pelos gases secos (inertes), e pelo vapor d'água presente na chaminé (por chuvas, umidade etc.)"},{"Enunciado":"Cite a menor parcela do cálculo das perdas de calor da caldeira:","Resposta":"A perda de calor por radiação e convecção (= no máximo 1% do total)"},{"Enunciado":"Cite o parâmetro usado para medir a perda de calor por combustão incompleta:","Resposta":"O teor de monóxido de carbono formado"},{"Enunciado":"Cite o nome do dispositivo usado para desviar ar do pré-aquecedor","Resposta":"Flap de contorno"},{"Enunciado":"Cite as possíveis causas de óleo vazando para a água","Resposta":"Vazamento nos tanques de óleo ou nos aquecedores"},{"Enunciado":"Cite as possíveis causas de falha na bomba de água:","Resposta":"Pane na tubulação, válvulas fechadas, avaria no selo ou falha na energia."},{"Enunciado":"Cite as possíveis causas de perda de aspiração na bomba de combustível:","Resposta":"Erro de manobra das válvulas, entupimento, vazamento ou viscosidade inadequada."}];
+
+Questoes.IndicacaoCausa = [{"Indicação":"Água baixa","Causa":"Falha nas bombas de alimentação."},{"Indicação":"Água baixa","Causa":"Vazamento nas tubulações."},{"Indicação":"Água baixa","Causa":"Problemas na válvula de alimentação."},{"Indicação":"Água baixa","Causa":"Defeito no sistema de controle de nível."},{"Indicação":"Água alta","Causa":"Flutuação brusca na demanda de vapor."},{"Indicação":"Água alta","Causa":"Problemas no controle automático de alimentação."},{"Indicação":"Água alta","Causa":"Problemas na válvula de alimentação."},{"Indicação":"Pressão de vapor alta","Causa":"Queda na demanda de vapor."},{"Indicação":"Pressão de vapor alta","Causa":"Água de alimentação muito quente."},{"Indicação":"Pressão de vapor baixa","Causa":"Água baixa no sistema."},{"Indicação":"Pressão de vapor baixa","Causa":"Queima insuficiente."},{"Indicação":"Pressão de vapor baixa","Causa":"Resistência térmica elevada."},{"Indicação":"Temperatura alta da água de alimentação","Causa":"Água de entrada mais quente que o ideal."},{"Indicação":"Temperatura baixa da água de alimentação","Causa":"Água de entrada mais fria que o ideal."},{"Indicação":"Temperatura alta do óleo","Causa":"Ajuste inadequado no aquecedor."},{"Indicação":"Temperatura alta do óleo","Causa":"Problemas técnicos no aquecedor."},{"Indicação":"Temperatura baixa do óleo","Causa":"Ajuste inadequado no aquecedor."},{"Indicação":"Temperatura baixa do óleo","Causa":"Problemas técnicos no aquecedor."},{"Indicação":"Pressão alta do óleo","Causa":"Ajuste incorreto na válvula."},{"Indicação":"Pressão alta do óleo","Causa":"Obstruções no sistema de óleo."},{"Indicação":"Pressão baixa do óleo","Causa":"Óleo muito viscoso."},{"Indicação":"Pressão baixa do óleo","Causa":"Problemas na bomba de óleo."},{"Indicação":"Pressão baixa do óleo","Causa":"Problemas nas tubulações de óleo."},{"Indicação":"Pressão baixa do óleo","Causa":"Água no óleo."},{"Indicação":"Pressão baixa do óleo","Causa":"Defeitos no purificador de óleo."},{"Indicação":"Pressão baixa do óleo","Causa":"Vazamentos no sistema de óleo."},{"Indicação":"Pressão de ar alta","Causa":"Ventiladores muito fortes."},{"Indicação":"Pressão de ar alta","Causa":"Vedação falha no registro de ar."},{"Indicação":"Pressão de ar baixa","Causa":"Ventiladores insuficientes."},{"Indicação":"Pressão de ar baixa","Causa":"Ventiladores fracos ou danificados."}];
+
+Questoes.IndicacaoConsequencia = [{"Indicação":"Água baixa","Consequência":"Superaquecimento e torra dos tubos."},{"Indicação":"Água baixa","Consequência":"Risco de explosão."},{"Indicação":"Água alta","Consequência":"Arrastamento de umidade para o superaquecedor."},{"Indicação":"Pressão de vapor alta","Consequência":"Ativação da válvula de segurança."},{"Indicação":"Pressão de vapor alta","Consequência":"Desperdício de vapor e água."},{"Indicação":"Pressão de vapor baixa","Consequência":"Perda de potência e rendimento."},{"Indicação":"Pressão de vapor baixa","Consequência":"Sobreaquecimento do superaquecedor."},{"Indicação":"Temperatura alta da água de alimentação","Consequência":"Redução na temperatura do vapor superaquecido."},{"Indicação":"Temperatura alta da água de alimentação","Consequência":"Arrastamento de umidade para o superaquecedor."},{"Indicação":"Temperatura baixa da água de alimentação","Consequência":"Aumento da temperatura do vapor superaquecido."},{"Indicação":"Temperatura alta do óleo","Consequência":"Vazamentos de óleo."},{"Indicação":"Temperatura baixa do óleo","Consequência":"Interrupção no fluxo de óleo."},{"Indicação":"Pressão alta do óleo","Consequência":"Danos às válvulas e tubulações."},{"Indicação":"Pressão baixa do óleo","Consequência":"Queima incompleta."},{"Indicação":"Pressão baixa do óleo","Consequência":"Acúmulo de óleo no sistema."},{"Indicação":"Pressão de ar alta","Consequência":"Excesso de ar no sistema."},{"Indicação":"Pressão de ar baixa","Consequência":"Acúmulo de fuligem."}];
+
+Questoes.Emergencias = [{"Ocorrência":"Água baixa","Origem":"Falha da bomba"},{"Ocorrência":"Água baixa","Origem":"Falha das válvulas"},{"Ocorrência":"Água baixa","Origem":"Falha do sistema de controle de nível"},{"Ocorrência":"Água baixa","Origem":"Vazamentos"},{"Ocorrência":"Água alta","Origem":"Aumento brusco na demanda de vapor"},{"Ocorrência":"Água alta","Origem":"Flutuação na demanda de vapor"},{"Ocorrência":"Água alta","Origem":"Falha do sistema de controle de nível"},{"Ocorrência":"Interrupção dos queimadores","Origem":"Tanque sem óleo"},{"Ocorrência":"Interrupção dos queimadores","Origem":"Obstrução no filtro"},{"Ocorrência":"Interrupção dos queimadores","Origem":"Vazamentos"},{"Ocorrência":"Interrupção dos queimadores","Origem":"Falha da bomba"},{"Ocorrência":"Interrupção dos queimadores","Origem":"Óleo frio"},{"Ocorrência":"Vazamento nos tubos internos","Origem":"Corrosão"},{"Ocorrência":"Vazamento nos tubos internos","Origem":"Vibração excessiva"},{"Ocorrência":"Vazamento nos tubos internos","Origem":"Superaquecimento"},{"Ocorrência":"Avaria no ventilador","Origem":"Falha do fornecimento elétrico"},{"Ocorrência":"Retrocesso de chama","Origem":"Falha da ignição"},{"Ocorrência":"Retrocesso de chama","Origem":"Falha da tiragem"},{"Ocorrência":"Retrocesso de chama","Origem":"Vazamentos"}];
+
+Questoes.Acidentes = [{"Ocasião":"Operação dos maçaricos ou queimadores","Consequências":"Queimaduras"},{"Ocasião":"Limpeza dos maçaricos ou queimadores","Consequências":"Artrite nas mãos"},{"Ocasião":"Exposição contínua à praça de máquinas","Consequências":"Perda de audição"},{"Ocasião":"Inspeção da fornalha","Consequências":"Problemas respiratórios"},{"Ocasião":"Acendimento do queimador","Consequências":"Explosão"},{"Ocasião":"Verificação do indicador de nível","Consequências":"Danos à visão"},{"Ocasião":"Aproximação a redes suspeitas de vapor","Consequências":"Morte"}];
+
+Questoes.PreliminarOuOperacional = [{"Ação":"Inspecionar a limpeza dos tubos e paredes","Tipo":"Preliminar"},{"Ação":"Inspecionar a presença de óleo no piso ou queimadores","Tipo":"Preliminar"},{"Ação":"Verificar se válvulas do indicador de nível, tubulações e manômetros estão abertas","Tipo":"Preliminar"},{"Ação":"Garantir válvulas de segurança sem garras de travamento e com suas alavancas","Tipo":"Preliminar"},{"Ação":"Inspecionar válvulas de drenagem e extração de fundo e superfície","Tipo":"Preliminar"},{"Ação":"Abrir a torneira de ar","Tipo":"Preliminar"},{"Ação":"Encher a caldeira até aparecer água no visor, com a rede auxiliar","Tipo":"Preliminar"},{"Ação":"Encher a caldeira até duas polegadas, com a rede principal","Tipo":"Preliminar"},{"Ação":"Abrir a válvula de proteção do superaquecedor","Tipo":"Preliminar"},{"Ação":"Abrir os drenos do superaquecedor para eliminar condensado","Tipo":"Preliminar"},{"Ação":"Usar o flap de contorno","Tipo":"Preliminar"},{"Ação":"Desviar ar do pré-aquecedor","Tipo":"Preliminar"},{"Ação":"Se houver outra caldeira acesa, usar seu vapor para aquecer os tanques de óleo","Tipo":"Preliminar"},{"Ação":"Testar o acionamento auto/manual do queimador","Tipo":"Preliminar"},{"Ação":"Testar o entupimento do indicador de nível da caldeira","Tipo":"Operacional"},{"Ação":"Ventilar a fornalha ","Tipo":"Operacional"},{"Ação":"Ventilar a fornalha por cinco minutos","Tipo":"Operacional"},{"Ação":"Acionar a bomba de diesel para admitir combustível aos pulverizadores","Tipo":"Operacional"},{"Ação":"Usar a tocha","Tipo":"Operacional"},{"Ação":"Aquecer o óleo pesado","Tipo":"Operacional"},{"Ação":"Preparar um queimador apagado com óleo pesado","Tipo":"Operacional"},{"Ação":"Fechar a torneira de ar completamente","Tipo":"Operacional"},{"Ação":"Fechar a torneira de ar pela metade","Tipo":"Operacional"},{"Ação":"Usar rotinas como 3x30, 5x25, 10x20","Tipo":"Operacional"},{"Ação":"Dar ramonagem no pré-aquecedor para remover a fuligem","Tipo":"Operacional"},{"Ação":"Testar as válvulas de segurança","Tipo":"Operacional"},{"Ação":"Drenar as redes de vapor","Tipo":"Operacional"},{"Ação":"Abrir o by-pass e as válvulas de comunicação","Tipo":"Operacional"}];
+
+Questoes.Defeitos = [{"Causa":"Muito excesso de ar","Consequência":"Fumaça branca"},{"Causa":"Muito excesso de ar","Consequência":"Super muito quente"},{"Causa":"Muito excesso de ar","Consequência":"Chaminé muito quente"},{"Causa":"Pouco excesso de ar","Consequência":"Fumaça negra"},{"Causa":"Pouco excesso de ar","Consequência":"Chaminé fria"},{"Causa":"Água de alimentação muito quente","Consequência":"Super muito frio"},{"Causa":"Água de alimentação muito fria","Consequência":"Super muito quente"},{"Causa":"Óleo muito frio","Consequência":"Fumaça negra"},{"Causa":"Muita fuligem","Consequência":"Super muito quente"},{"Causa":"Muita fuligem","Consequência":"Chaminé muito quente"},{"Causa":"Arrastamento","Consequência":"Super muito frio"},{"Causa":"Incrustações","Consequência":"Super muito frio"},{"Causa":"Avaria nos ramonadores","Consequência":"Vazamento de gases"},{"Causa":"Avaria no invólucro da caldeira","Consequência":"Vazamento de gases"},{"Causa":"Calor excessivo de combustão","Consequência":"Avaria na parede refratária"},{"Causa":"Mau assentamento dos tijolos","Consequência":"Avaria na parede refratária"},{"Causa":"Falha nos sensores","Consequência":"Leituras falsas"}];
+
+
+
+function questoes_aleatorias (lista, quantas) {
+    if (quantas > lista.length) throw new Error("Pediu mais questões do que o possível");
+
+    return lista.sort(() => Math.random() - Math.random()).slice(0, quantas);
+}
+</script>
+
+
+<!-- Funções gerais -->
+<script>
+function multiplicar_questao(node, numero) {
+    console.log(node);
+    console.log(numero);
+    let modelo = node.outerHTML;
+    let html = '';
+
+    for (let i=0; i<numero; i++) {
+        html += `\n\n${modelo.replace("{numero}", i)}\n\n`;
+    }
+
+    node.outerHTML = html;
+}
+
+function mostrar_resposta(node) {
+    node.closest(".questao").querySelector(".show-resposta").classList.remove("hidden");
+    node.classList.add("hidden");
+}
+
+function acertar(node) {
+    let classList = node.closest(".questao").classList;
+    classList.add("acertou-questao");
+    classList.remove("errou-questao");
+}
+
+function errar(node) {
+    let classList = node.closest(".questao").classList;
+    classList.add("errou-questao");
+    classList.remove("acertou-questao");
+
+    if (node.classList.contains("opt")) node.classList.add("opt-errada");
+}
+
+function bind_esquerda(node) {
+    if (node.className.includes("bound-")) return;
+    if (node.className.includes("binding")) return node.classList.remove("binding");
+
+    let preencherColunas = node.closest(".preencher-colunas");
+    let listaEsquerda = preencherColunas.querySelector(".lista-opcoes.esquerda");
+    let listaDireita = preencherColunas.querySelector(".lista-opcoes.direita");
+    
+    node.classList.add("binding");
+
+    let rival = Array.from(listaEsquerda.querySelector(".binding")).filter(n => n != node)[0];
+    if (rival) { return rival.classList.remove("binding"); }
+
+    let par = listaDireita.querySelector(".binding");
+    if (par) { return selar_bind(node, par); }
+}
+
+function bind_direita(node) {
+    if (node.className.includes("bound-")) return;
+    if (node.className.includes("binding")) return node.classList.remove("binding");
+
+    let preencherColunas = node.closest(".preencher-colunas");
+    let listaEsquerda = preencherColunas.querySelector(".lista-opcoes.esquerda");
+    let listaDireita = preencherColunas.querySelector(".lista-opcoes.direita");
+    
+    node.classList.add("binding");
+
+    let rival = Array.from(listaDireita.querySelector(".binding")).filter(n => n != node)[0];
+    if (rival) { return rival.classList.remove("binding"); }
+
+    let par = listaEsquerda.querySelector(".binding");
+    if (par) { return selar_bind(node, par); }
+}
+
+function selar_bind(node, par) {
+    let preencher_colunas = node.closest(".preencher-colunas");
+    let quantos_binds = preencher_colunas.getAttribute("data-num-binds") || 0;
+    quantos_binds = Number.parseInt(quantos_binds) + 1;
+
+    preencher_colunas.setAttribute("data-num-binds", quantos_binds);
+
+    node.classList.remove("binding"); node.classList.add('bound', `bound-${quantos_binds}`);
+    par.classList.remove("binding"); par.classList.add('bound', `bound-${quantos_binds}`);
+
+    node.setAttribute("data-resposta", par.textContent);
+    par.setAttribute("data-resposta", node.textContent);
+}
+
+function checar_correlacione(node) {
+    let questao = node.closest(".questao");
+    let preencher_colunas = questao.querySelector(".preencher-colunas");
+    if (preencher_colunas.getAttribute("data-num-binds") != "5") return;
+
+    let opcoesEsquerda = preencher_colunas.querySelector(".esquerda");
+    let opcoesDireita = preencher_colunas.querySelector(".direita");
+
+    console.info("esquerdalhas", opcoesEsquerda);
+    console.info("direitalhas", opcoesDireita);
+
+    let resposta = [];
+    for (let i=0; i<5; i++) {
+        let esquerda = opcoesEsquerda.querySelector(`.bound-${i+1}`).textContent;
+        let direita = opcoesDireita.querySelector(`.bound-${i+1}`).textContent;
+
+        resposta.push([esquerda, direita]);
+    }
+
+    if (arrays_zipam(resposta, questao.resposta)) acertar(node);
+    else errar(node);
+    
+    console.info("Resposta dada", resposta);
+    console.info("Resposta certa", questao.resposta);
+    console.log("Iguais", arrays_zipam(resposta, questao.resposta));
+}
+
+function arrays_zipam(foo, bar) {
+    bar = Array.from(bar);
+
+    for (let i=0; i<foo.length; i++) {
+        let [key, value] = foo[i];
+        console.log(`Procurando [${[key, value]}]`);
+        console.log(bar);
+
+        let indice_match = bar.findIndex(arr => arr[0] == key && arr[1] == value);
+        console.info("índice do match", indice_match);
+
+        if (indice_match < 0) return false;
+
+        bar[indice_match] = [0,0];
+    }
+
+    return true;
+}
+
+function limpar_correlacione(node) {
+    let correlacione = node.closest(".questao-correlacione");
+    correlacione.classList.remove("acertou-questao", "errou-questao");
+
+    correlacione.querySelectorAll(".opt").forEach(opt => {
+        opt.className = opt.className.replaceAll(/bound-\d/g, '').replace("binding", '').replace("bound", '');
+    });
+
+    correlacione.querySelector(".preencher-colunas").setAttribute("data-num-binds", "");
+}
+
+function preencher_todos_correlaciones(node, categoria) {
+    let banco = Questoes[categoria];
+    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    console.info("Linhas:", linhas);
+    
+    let esquerda = node.querySelector(".esquerda");
+    let direita = node.querySelector(".direita");
+    
+    let modelo_esquerda = `<li class="opt opt-esquerda lig-{lig}" data-par="{par}" onclick="bind_esquerda(this)">{Item}</li>`;
+    let modelo_direita = `<li class="opt opt-direita lig-{lig}" data-par="{par}" onclick="bind_direita(this)">{Item}</li>`;
+                
+    let headers = Object.keys(linhas[0]);
+    console.info("Headers", headers);
+
+    node.resposta = [];
+    for (let i=0; i<linhas.length; i++) {
+        if (i>=5) break;
+        let linha = linhas[i];
+
+        let item = linha[headers[0]], par = linha[headers[1]];
+
+        esquerda.innerHTML += `\n\n${modelo_esquerda.replace('{Item}', item).replace("{par}", par).replace("{lig}", i+1)}\n\n`;
+        direita.innerHTML += `\n\n${modelo_direita.replace('{Item}', par).replace("{par}", item).replace("{lig}", i+1)}\n\n`;
+        node.resposta.push([item, par]);
+    }
+
+    node.querySelectorAll(".preencher-colunas .opt").forEach(
+        opt => opt.style.order = Math.floor(Math.random() * 10)
+    );
+}
+
+function preencher_todos_prelim_ope(node) {
+    let banco = Questoes['PreliminarOuOperacional'];
+    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    console.log(linhas);
+
+    let modelo = 
+    `<li class="frase" data-valor="{Valor}">
+        <button class="btn-inline btn-prel" onclick="check0(this)">Preliminar</button>
+        <div class="assertiva prelop">{Ação}</div>
+        <button class="btn-inline btn-ope" onclick="check1(this)">Operacional</button>
+    </li>`;
+                
+    let headers = Object.keys(linhas[0]);
+    console.info("Headers", headers);
+
+    let listaFrases = node.querySelector(".lista-frases");
+
+    for (let i=0; i<linhas.length; i++) {
+        if (i>=10) break;
+        let linha = linhas[i];
+        let acao = linha["Ação"], tipo = linha["Tipo"];
+
+        let valor = tipo == "Operacional"? 1 : 0;
+
+        listaFrases.innerHTML += modelo.replace("{Ação}", acao).replace("{Valor}", valor);
+    }
+}
+
+function preencher_todos_VF(node) {
+    let banco = Questoes['VerdadeiroOuFalso'];
+    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    console.log(linhas);
+
+    let modelo = 
+    `<li class="frase" data-valor="{Valor}" data-num="{num}">
+        <button class="btn-inline btn-falso" onclick="check0(this)">Falso</button>
+        <div class="assertiva VF">{Assertiva}</div>
+        <button class="btn-inline btn-verd" onclick="check1(this)">Verdadeiro</button>
+    </li>` + 
+    
+    `<div class="comentario hidden" data-num="{num}">{Explicacao}</div>`;
+                
+    let headers = Object.keys(linhas[0]);
+    console.info("Headers", headers);
+
+    let listaFrases = node.querySelector(".lista-frases");
+
+    for (let i=0; i<linhas.length; i++) {
+        if (i>=10) break;
+        let linha = linhas[i];
+        let acao = linha["Enunciado"], tipo = linha["Valor lógico"], exp = linha["Explicação"];
+
+        let valor = tipo == "V"? 1 : 0;
+
+        listaFrases.innerHTML += modelo
+        .replaceAll("{num}", i+1)
+        .replace("{Assertiva}", acao)
+        .replace("{Valor}", valor)
+        .replace("{Explicacao}", exp);
+    }
+}
+
+function check0(node) {
+    let frase = node.closest(".frase");
+    if (frase.getAttribute("data-valor") == "0") acertar_frase(frase);
+    else errar_frase(frase);
+}
+
+function check1(node) {
+    let frase = node.closest(".frase");
+    if (frase.getAttribute("data-valor") == "1") acertar_frase(frase);
+    else errar_frase(frase);
+}
+
+function acertar_frase(frase) {
+    frase.classList.add("acertou-frase");
+    frase.classList.remove("errou-frase");
+    revelar_comentario(frase);
+}
+
+function errar_frase(frase) {
+    frase.classList.add("errou-frase");
+    frase.classList.remove("acertou-frase");
+    revelar_comentario(frase);
+}
+
+function revelar_comentario(node, unique) {
+    if (unique) {
+        node.closest(".questao").querySelector(".comentario").classList.remove("hidden");
+        return;
+    }
+
+    let num = Number.parseInt(node.getAttribute("data-num"));
+    node.closest(".questao").querySelector(`.comentario[data-num='${num}']`).classList.remove("hidden");
+}
+
+</script>
+
+<h1>Simulado de Caldeiras</h1>
+
+<!-- QUESTIONARIO -->
+<section class="questionario flex-center">
+
+<!-- Verdadeiro ou falso -->
+<section class="bloco" id="section-VF">
+    <div class="questao flex-center questao-dicotomia">
+        <div class="enunciado">Assinale verdadeiro ou falso para as afirmativas abaixo:</div>
+        <div class="lista-frases">
+
+        </div>
+
+        <script>
+            preencher_todos_VF(document.currentScript.closest(".questao"));
+        </script>
+    </div>
+</section>
+
+<hr class="separator" />
+
+<!-- Cite -->
+<section class="bloco" id="section-cite">
+    <div class="questao flex-center questao-cite" id="cite-{numero}">
+        <div class="enunciado">{Enunciado}</div>
+        <div class="show-resposta flex-center hidden">
+            <div class="resposta">{Resposta}</div>
+
+            <div class="area-botoes">
+                <button class="btn btn-acertar" onclick="acertar(this)">Acertou</button>
+                <button class="btn btn-errar" onclick="errar(this)">Errou</button>
+            </div>
+        </div>
+
+        <button class="btn btn-mostrar" onclick="mostrar_resposta(this)">Mostrar resposta</button>
+
+        <script>
+            var NUMERO_CITES = 5;
+            multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_CITES);
+        </script>
+    </div>
+
+    <script>
+        function preencher_cite(node, questao) {
+            node.querySelector(".enunciado").textContent = questao['Enunciado'];
+            node.querySelector(".resposta").textContent = questao['Resposta'];
+        }
+        
+        function preencher_todos_cites() {
+            let cites = Array.from(document.querySelectorAll(".questao-cite"));
+            let questoes = questoes_aleatorias(Questoes.Cite, cites.length);
+        
+            for (let i=0; i<cites.length; i++) {
+                preencher_cite(cites[i], questoes[i]);
+            }
+        }
+        
+        preencher_todos_cites();
+        </script>
+</section>
+
+<hr class="separator" />
+
+<!-- Múltipla escolha -->
+<section class="bloco" id="section-multipla-escolha">
+    <div class="questao flex-center questao-multipla-escolha" id="multipla-escolha-{numero}">
+        <div class="enunciado">{Enunciado}</div>
+        <div class="lista-opcoes">
+            <li class="opt opt-a" onclick="errar(this); revelar_comentario(this, 1)">{a}</li>
+            <li class="opt opt-b" onclick="errar(this); revelar_comentario(this, 1)">{b}</li>
+            <li class="opt opt-c" onclick="errar(this); revelar_comentario(this, 1)">{c}</li>
+            <li class="opt opt-d" onclick="errar(this); revelar_comentario(this, 1)">{d}</li>
+            <li class="opt opt-correta" onclick="acertar(this); revelar_comentario(this, 1)">{Resposta}</li>
+        </div>
+
+        <div class="comentario hidden">{Comentário}</div>
+        <script>
+            var NUMERO_ME = 29;
+            multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_ME);
+        </script>
+    </div>
+
+    <script>
+        function preencher_multipla_escolha(node, questao) {
+            node.querySelector(".enunciado").textContent = questao['Enunciado'];
+            node.querySelector(".comentario").textContent = questao['Comentário'];
+            node.querySelector(".opt-correta").textContent = questao['Resposta'];
+            node.querySelector(".opt-a").textContent = questao['a'];
+            node.querySelector(".opt-b").textContent = questao['b'];
+            node.querySelector(".opt-c").textContent = questao['c'];
+            node.querySelector(".opt-d").textContent = questao['d'];
+
+            let opts = Array.from(node.querySelectorAll(".opt"));
+            let new_list_order = opts.sort(() => Math.random() - Math.random());
+            node.querySelector(".lista-opcoes").innerHTML = new_list_order.map(node => node.outerHTML).join("\n");
+        }
+        
+        function preencher_todas_multiplas_escolhas() {
+            let mes = Array.from(document.querySelectorAll(".questao-multipla-escolha"));
+            let questoes = questoes_aleatorias(Questoes.MultiplaEscolha, mes.length);
+        
+            for (let i=0; i<mes.length; i++) {
+                console.info(mes[i], questoes[i]);
+                preencher_multipla_escolha(mes[i], questoes[i]);
+            }
+        }
+        
+        preencher_todas_multiplas_escolhas();
+        </script>
+</section>
+
+<hr class="separator" />
+
+<!-- Perguntas -->
+<section class="bloco" id="section-cite">
+    <div class="questao flex-center questao-pergunta" id="pergunta-{numero}">
+        <div class="enunciado">{Enunciado}</div>
+        <div class="show-resposta flex-center hidden">
+            <div class="resposta">{Resposta}</div>
+
+            <div class="area-botoes">
+                <button class="btn btn-acertar" onclick="acertar(this)">Acertou</button>
+                <button class="btn btn-errar" onclick="errar(this)">Errou</button>
+            </div>
+        </div>
+
+        <button class="btn btn-mostrar" onclick="mostrar_resposta(this)">Mostrar resposta</button>
+
+        <script>
+            var NUMERO_PERGUNTAS = 4;
+            multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_PERGUNTAS);
+        </script>
+    </div>
+
+    <script>
+        function preencher_pergunta(node, questao) {
+            node.querySelector(".enunciado").textContent = questao['Enunciado'];
+            node.querySelector(".resposta").textContent = questao['Resposta'];
+        }
+        
+        function preencher_todas_perguntas() {
+            let perguntas = Array.from(document.querySelectorAll(".questao-pergunta"));
+            let questoes = questoes_aleatorias(Questoes.Pergunta, perguntas.length);
+        
+            for (let i=0; i<perguntas.length; i++) {
+                preencher_pergunta(perguntas[i], questoes[i]);
+            }
+        }
+        
+        preencher_todas_perguntas();
+    </script>
+</section>
+
+<hr class="separator" />
+
+<!-- CORRELACIONES -->
+
+<!-- Indicação/Causa -->
+<section class="bloco">
+    <div class="questao flex-center questao-correlacione">
+        <div class="enunciado">Correlacione as indicações dos instrumentos de medição com suas causas:</div>
+        <div class="preencher-colunas">
+            <div class="lista-opcoes esquerda"></div>
+            <div class="lista-opcoes direita"></div>
+        </div>
+
+        <div class="area-botoes">
+            <button class="btn btn-limpar" onclick="limpar_correlacione(this)">Recomeçar</button>
+            <button class="btn btn-checar" onclick="checar_correlacione(this)">Checar resposta</button>
+        </div>
+        
+        <script>
+            preencher_todos_correlaciones(document.currentScript.closest(".questao-correlacione"), 'IndicacaoCausa');
+        </script>
+    </div>
+
+<!-- <hr class="separator" /> -->
+
+<!-- Indicação/Consequência -->
+
+    <div class="questao flex-center questao-correlacione">
+        <div class="enunciado">Correlacione as indicações dos instrumentos de medição com as consequências por elas causadas:</div>
+        <div class="preencher-colunas">
+            <div class="lista-opcoes esquerda"></div>
+            <div class="lista-opcoes direita"></div>
+        </div>
+
+        <div class="area-botoes">
+            <button class="btn btn-limpar" onclick="limpar_correlacione(this)">Recomeçar</button>
+            <button class="btn btn-checar" onclick="checar_correlacione(this)">Checar resposta</button>
+        </div>
+        
+        <script>
+            preencher_todos_correlaciones(document.currentScript.closest(".questao-correlacione"), 'IndicacaoConsequencia');
+        </script>
+    </div>
+
+
+<!-- <hr class="separator" /> -->
+
+<!-- Emergências/Origens -->
+
+    <div class="questao flex-center questao-correlacione">
+        <div class="enunciado">Correlacione as situações de emergência na operação de caldeiras e suas possíveis origens:</div>
+        <div class="preencher-colunas">
+            <div class="lista-opcoes esquerda"></div>
+            <div class="lista-opcoes direita"></div>
+        </div>
+
+        <div class="area-botoes">
+            <button class="btn btn-limpar" onclick="limpar_correlacione(this)">Recomeçar</button>
+            <button class="btn btn-checar" onclick="checar_correlacione(this)">Checar resposta</button>
+        </div>
+
+        <script>
+            preencher_todos_correlaciones(document.currentScript.closest(".questao-correlacione"), 'Emergencias');
+        </script>
+    </div>
+
+
+<!-- <hr class="separator" /> -->
+
+<!-- Fainas/Acidentes -->
+
+    <div class="questao flex-center questao-correlacione">
+        <div class="enunciado">Correlacione as fainas relativas à operação de caldeiras e os acidentes que podem acontecer por negligência do operador:</div>
+        <div class="preencher-colunas">
+            <div class="lista-opcoes esquerda"></div>
+            <div class="lista-opcoes direita"></div>
+        </div>
+
+        <div class="area-botoes">
+            <button class="btn btn-limpar" onclick="limpar_correlacione(this)">Recomeçar</button>
+            <button class="btn btn-checar" onclick="checar_correlacione(this)">Checar resposta</button>
+        </div>
+
+        <script>
+            preencher_todos_correlaciones(document.currentScript.closest(".questao-correlacione"), 'Acidentes');
+        </script>
+    </div>
+
+
+<!-- <hr class="separator" /> -->
+
+<!-- Preliminar/Operacional -->
+
+    <div class="questao flex-center questao-dicotomia">
+        <div class="enunciado">Correlacione os defeitos na operação de caldeiras e as consequências a eles associadas:</div>
+        <div class="lista-frases">
+
+        </div>
+
+        <script>
+            preencher_todos_prelim_ope(document.currentScript.closest(".questao"));
+        </script>
+    </div>
+
+</section>
+
+<button class="btn" onclick="finalizar()">Pedir as contas!</button>
+
+<!--CLOSE QUESTIONARIO--></section>
+
+<div id="overlay" class="hidden" onclick="this.classList.add('hidden')">
+<div id="resultado" onclick="event.stopPropagation()">
+    Você completou <div class="stats" id="completadas">XX%</div> do Simulado e acertou <div class="stats" id="percent">YY%</div> das questões que fez!
+    <br />
+    <button id="retry" class="btn hidden" onclick="location.reload(); window.scrollTo(0,0)">Tentar de novo! :3</button>
+</div>
+</div>
+
+<script>
+function finalizar() {
+    let resultado = document.getElementById("resultado");
+    let completadas = document.getElementById("completadas");
+    let percent = document.getElementById("percent");
+    let retry = document.getElementById("retry");
+    let overlay = document.getElementById("overlay");
+
+    // CONTAGEM
+    let total = document.querySelectorAll(".assertiva, .questao-cite, .questao-multipla-escolha, .questao-pergunta, .questao-correlacione").length;
+    let acertos = document.querySelectorAll(".acertou-questao, .acertou-frase").length;
+    let erros = document.querySelectorAll(".errou-questao, .errou-frase").length;
+    let feitas = acertos+erros;
+
+    if (total == 0) return;
+    if (feitas == 0) return;
+
+    console.info("total", total);
+    console.info("acertos", acertos);
+    console.info("erros", erros);
+    console.info("feitas", feitas);
+
+    completadas.textContent = Math.round(feitas / total * 100) + "%";
+    percent.textContent = Math.round(acertos / feitas * 100) + "%";
+
+    if (acertos / feitas <= 0.6) {
+      retry.classList.add("btn-errar");
+      retry.textContent = "Tentar de novo! >.<";  
+    }
+    else {
+        retry.classList.add("btn-acertar");
+        retry.textContent = "Dar mais um fecho! :3";
+    }
+
+    retry.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
