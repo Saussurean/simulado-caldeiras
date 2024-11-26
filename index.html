@@ -2,6 +2,7 @@
 <head>
     <title>Simulado</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile_style.css" />
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -229,9 +230,9 @@ function preencher_todos_prelim_ope(node) {
 
     let modelo = 
     `<li class="frase" data-valor="{Valor}">
-        <button class="btn-inline btn-prel" onclick="check0(this)">Preliminar</button>
+        <button class="btn-inline btn-prel" onclick="check0(this)">PRE</button>
         <div class="assertiva prelop">{Ação}</div>
-        <button class="btn-inline btn-ope" onclick="check1(this)">Operacional</button>
+        <button class="btn-inline btn-ope" onclick="check1(this)">OP</button>
     </li>`;
                 
     let headers = Object.keys(linhas[0]);
@@ -257,9 +258,9 @@ function preencher_todos_VF(node) {
 
     let modelo = 
     `<li class="frase" data-valor="{Valor}" data-num="{num}">
-        <button class="btn-inline btn-falso" onclick="check0(this)">Falso</button>
+        <button class="btn-inline btn-falso" onclick="check0(this)">F</button>
         <div class="assertiva VF">{Assertiva}</div>
-        <button class="btn-inline btn-verd" onclick="check1(this)">Verdadeiro</button>
+        <button class="btn-inline btn-verd" onclick="check1(this)">V</button>
     </li>` + 
     
     `<div class="comentario hidden" data-num="{num}">{Explicacao}</div>`;
