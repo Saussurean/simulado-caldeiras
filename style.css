@@ -347,7 +347,7 @@ body {
 
 .errou-frase {
     &[data-valor="0"] .btn-inline:first-child, &[data-valor="1"] .btn-inline:last-child {
-        border: 5px solid black;
+        border: 5px dashed black;
         animation: hurt .5s alternate-reverse;
         animation-iteration-count: 3;
     }
