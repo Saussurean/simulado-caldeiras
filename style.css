@@ -316,7 +316,7 @@ body {
 }
 
 .btn-prel {
-    --logical-color: brown;
+    --logical-color: #876424;
 }
 
 .btn-ope {
@@ -329,7 +329,7 @@ body {
     }
 
     &[data-valor="0"] .assertiva.prelop {
-        background-color: brown;
+        background-color: #868743;
     }
 
     &[data-valor="1"] .assertiva.VF {
