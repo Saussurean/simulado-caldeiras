@@ -1329,7 +1329,7 @@ function limpar_correlacione(node) {
 
 function preencher_todos_correlaciones(node, categoria) {
     let banco = Questoes[categoria];
-    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    let linhas = questoes_aleatorias(banco, banco.length);
     console.info("Linhas:", linhas);
     
     let esquerda = node.querySelector(".esquerda");
@@ -1360,7 +1360,7 @@ function preencher_todos_correlaciones(node, categoria) {
 
 function preencher_todos_prelim_ope(node) {
     let banco = Questoes['PreliminarOuOperacional'];
-    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    let linhas = questoes_aleatorias(banco, banco.length);
     console.log(linhas);
 
     let modelo = 
@@ -1388,7 +1388,7 @@ function preencher_todos_prelim_ope(node) {
 
 function preencher_todos_VF(node) {
     let banco = Questoes['VerdadeiroOuFalso'];
-    let linhas = questoes_aleatorias(banco, Math.max(0.5*banco.length, 5));
+    let linhas = questoes_aleatorias(banco, banco.length);
     console.log(linhas);
 
     let modelo = 
@@ -1518,6 +1518,8 @@ Borda preta - Marca a resposta certa se você errou.<br/>
             let questoes = questoes_aleatorias(Questoes.Cite, cites.length);
         
             for (let i=0; i<cites.length; i++) {
+                if (i >= 30) break;
+                
                 preencher_cite(cites[i], questoes[i]);
             }
         }
