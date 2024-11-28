@@ -24,6 +24,10 @@
 var Questoes = [];
 
 Questoes.VerdadeiroOuFalso = [{
+    "Enunciado": "A caldeira começa queimando óleo pesado, e depois troca para óleo diesel.",
+    "Valor lógico": "F",
+    "Explicação": "Ela começa queimando diesel, e depois troca para óleo pesado."
+}, {
     "Enunciado": "A SOLAS requer de cada caldeira a óleo alarme e corte o suprimento de óleo em casos de: água alta, falha de ar e falha de chama.",
     "Valor lógico": "F",
     "Explicação": "O alarme especificado na regra é para água baixa."
@@ -52,9 +56,9 @@ Questoes.VerdadeiroOuFalso = [{
     "Valor lógico": "V",
     "Explicação": ""
 }, {
-    "Enunciado": "Todos os compartimentos de máquinas contendo qualquer tipo de caldeira devem ser bem ventilados e requerem ventilação constante mesmo à plena potência das máquinas e em mau tempo.",
+    "Enunciado": "Todos os compartimentos de máquinas contendo qualquer tipo de caldeira devem ser bem ventilados e todos requerem ventilação constante mesmo à plena potência das máquinas e em mau tempo.",
     "Valor lógico": "F",
-    "Explicação": "Esse requisito mais extremo é limitado a caldeiras de categoria A."
+    "Explicação": "O segundo requisito, mais extremo, é limitado a caldeiras de categoria A."
 }, {
     "Enunciado": "A SOLAS requer que sempre haja detetores de princípio de incêndio nos invólucros dos ventiladores/exaustores da caldeira e nos tubulões de ar de lavagem da máquina propulsora.",
     "Valor lógico": "F",
@@ -220,7 +224,7 @@ Questoes.VerdadeiroOuFalso = [{
     "Valor lógico": "F",
     "Explicação": "NOx Technical Code - Emissão de óxidos de nitrogênio."
 }, {
-    "Enunciado": "O anexo VI da Marpol prevê as inspeções: inicial, de renovação, intermediária, anual e adicional.",
+    "Enunciado": "O anexo VI da Marpol (Prevenção da Poluição por Ar) prevê as inspeções: inicial, de renovação, intermediária, anual e adicional.",
     "Valor lógico": "V",
     "Explicação": ""
 }, {
@@ -254,7 +258,7 @@ Questoes.VerdadeiroOuFalso = [{
 }, {
     "Enunciado": "Não se deve fazer extração de fundo ou superfície com a caldeira fria e sem pressão.",
     "Valor lógico": "V",
-    "Explicação": ""
+    "Explicação": "Porque a pressão do mar será maior que a da tubulação de extração de fundo, levando a refluxo de água e entrada de sais."
 }, {
     "Enunciado": "Após o fim do mandrilhamento de tubos, deve-se fazer o teste de descontinuidade por líquido penetrante a fim de detectar vazamentos.",
     "Valor lógico": "F",
@@ -299,6 +303,38 @@ Questoes.VerdadeiroOuFalso = [{
     "Enunciado": "Se o acendimento do queimador não for feito com sucesso, deve-se a cada tentativa fazer outra purga ventilando a fornalha por cinco minutos.",
     "Valor lógico": "F",
     "Explicação": "Faz-se a cada duas vezes sem sucesso."
+}, {
+    "Enunciado": "Caldeiras automáticas apagar-se-ão automaticamente com a ascensão do Economizador.",
+    "Valor lógico": "V",
+    "Explicação": ""
+}, {
+    "Enunciado": "Para colocar o Economizador na linha, é preliminar que o MCP esteja na potência máxima e haja no mínimo uma caldeira auxiliar acesa.",
+    "Valor lógico": "F",
+    "Explicação": "Apenas uma caldeira auxiliar em serviço, e não mais que isso."
+}, {
+    "Enunciado": "Para colocar o Economizador na linha, é preciso que a bomba de circulação esteja em operação, e a BAP esteja pronta para entrar na linha.",
+    "Valor lógico": "F",
+    "Explicação": "A bomba de alimentação principal (BAP) esteja em operação, e a bomba de circulação esteja pronta para entrar na linha."
+}, {
+    "Enunciado": "Para tirar o Economizador da linha, é preliminar que o MCP esteja na potência máxima.",
+    "Valor lógico": "F",
+    "Explicação": "MCP em potência de serviço."
+}, {
+    "Enunciado": "Ao se cortar a admissão de água e descarga de vapor do Economizador, o nível de água na caldeira auxiliar tenderá a cair.",
+    "Valor lógico": "V",
+    "Explicação": "Sim, pois o turbo-gerador perderá potência e, consequentemente, a bomba de alimentação ficará mais fraca."
+}, {
+    "Enunciado": "O Economizador costuma ter três lanças de injeção de vapor para ramonagem, uma para cada seção: pré-aquecedor, evaporador e superaquecedor.",
+    "Valor lógico": "F",
+    "Explicação": "Geralmente costuma ter duas para cada seção, totalizando seis."
+}, {
+    "Enunciado": "É recomendado ao pessoal do quarto de serviço fazer as medições locais com os instrumentos, a fim de comparar com o CCM, uma vez por quarto de serviço.",
+    "Valor lógico": "F",
+    "Explicação": "É recomendado fazer as medições locais uma vez por hora."
+}, {
+    "Enunciado": "Após a lavagem do lado do fogo, usa-se o indicador ácido-base \"Alaranjado de metila\" para testar a possível acidez da água de lavagem proveniente das incrustações e da fuligem.",
+    "Valor lógico": "F",
+    "Explicação": "O indicador usado chama-se \"Papel de tornassol\". Ele fica vermelho em contato com meios ácidos."
 }];
 
 Questoes.MultiplaEscolha = [{
@@ -360,7 +396,7 @@ Questoes.MultiplaEscolha = [{
 }, {
     "Enunciado": "Qual informação abaixo é a única verdadeira sobre a inspeção das válvulas de segurança das caldeiras?",
     "Resposta": "Caldeiras tipo B de água tratada  devem ser testadas com o acionamento manual da alavanca, porém sem prazo definido pela norma, sendo a critério do fabricante.",
-    "Comentário": "Tipo B de água tratada: a critério do fabricante  Tipo B de água não tratada: mensalmente  Todas: não superior ao prazo de inspeção periódica",
+    "Comentário": "Tipo B de água tratada: a critério do fabricante  Tipo B de água não tratada: mensalmente  Todas: não superior ao prazo de inspeção periódica (anual)",
     "a": "Todas as válvulas de segurança devem ser testadas pelo menos anualmente.",
     "b": "Caldeiras tipo B de água não tratada devem ser testadas com o acionamento manual da alavanca pelo menos anualmente.",
     "c": "As válvulas de segurança devem ser testadas em prazo não inferior ao prazo da inspeção periódica das caldeiras que protegem.",
@@ -601,6 +637,36 @@ Questoes.Pergunta = [{
 }];
 
 Questoes.Cite = [{
+    "Enunciado": "Cite o motivo de se cobrir os equipamentos com uma lona durante a lavagem da fornalha:",
+    "Resposta": "Para evitar corrosão ácidas por respingos da água."
+}, {
+    "Enunciado": "Cite os dois procedimentos aprovados para lavagem do lado da fornalha:",
+    "Resposta": "Utilização de lança d'água ou de injetor d'água a vapor."
+}, {
+    "Enunciado": "Cite a composição do plástico/barro refratário:",
+    "Resposta": "É uma mistura de argila calcinada, argila bruta e água."
+}, {
+    "Enunciado": "Cite como se converte de [bar] para [quilopascal]",
+    "Resposta": "1 Bar equivale a 100 kPa."
+}, {
+    "Enunciado": "Cite os principais elementos cujo excesso de concentração na água de alimentação pode levar a incrustações:",
+    "Resposta": "Cloreto de sódio; sulfatos de Cálcio e Magnésio; e Óleo."
+}, {
+    "Enunciado": "Cite os efeitos prejudiciais do cloreto de sódio em alta concentração na caldeira:",
+    "Resposta": "Arrastamento e incrustação do superaquecedor."
+}, {
+    "Enunciado": "Cite os efeitos prejudiciais dos sulfatos de cálcio e de magnésio em alta concentração na caldeira:",
+    "Resposta": "Incrustam o interior dos tubos mais próximos à fornalha, formando uma resistência térmica."
+}, {
+    "Enunciado": "Cite o intervalo de pressão de trabalho que definem uma caldeira como de categoria B:",
+    "Resposta": "Entre 60kPa e 1960kPa."
+}, {
+    "Enunciado": "Cite as ocasiões em que é considerado boa prática executar a ramonagem:",
+    "Resposta": "Antes de entrar no porto, depois de sair do porto, e a cada 24h em alto mar."
+}, {
+    "Enunciado": "Cite o que se fazer à Caldeira Auxiliar à medida que a taxa de evaporação no Economizador aumenta:",
+    "Resposta": "Deve-se reduzir-lhe a razão de queima até que cesse a combustão. (Obs.: Se a caldeira for automática, isso acontecerá sem intervenção do operador)."
+}, {
     "Enunciado": "Cite os dois tipos de cimento usados para assentar tijolos no refratário",
     "Resposta": "Os secantes a calor e os secantes a ar"
 }, {
@@ -628,8 +694,11 @@ Questoes.Cite = [{
     "Enunciado": "Cite em qual direção/sentido é feita a lavagem dos tubos da fornalha",
     "Resposta": "Lavam-se os feixos tubulares de cima para baixo."
 }, {
+    "Enunciado": "Cite em que consiste a manutenção dos tubulões:",
+    "Resposta": "A inspeção e troca dos órgãos internos e o reparo da chapa do invólucro, em caso de corrosões."
+}, {
     "Enunciado": "Cite quais tubos devem ser evitados durante a lavagem da fornalha",
-    "Resposta": "Os tubos da parede d'água e do fundo."
+    "Resposta": "Os tubos da parede d'água lateral e do fundo."
 }, {
     "Enunciado": "Cite os dois métodos usados para conservar a caldeira fora de serviço, e qual é preferível por ser mais simples",
     "Resposta": "Caldeira totalmente cheia (preferível) ou totalmente vazia."
@@ -726,6 +795,15 @@ Questoes.Cite = [{
 }, {
     "Enunciado": "Cite as possíveis causas de perda de aspiração na bomba de combustível:",
     "Resposta": "Erro de manobra das válvulas, entupimento, vazamento ou viscosidade inadequada."
+}, {
+    "Enunciado": "Cite como se faz o teste de funcionamento das bombas principal e de reserva:",
+    "Resposta": "Para-se a bomba principal com o botão de parada para verificar se a reserva entrará automaticamente em seu lugar. Depois, faz-se o vice-versa."
+}, {
+    "Enunciado": "Cite o que é o propósito da válvula equalizadora (ou de contorno, ou de bypass)",
+    "Resposta": "É uma válvula de manobra, paralela à válvula de comunicação de vapor, com a finalidade de aquecer e igualar a pressão na rede de vapor."
+}, {
+    "Enunciado": "Cite o motivo de ser necessário comparar as medições locais com os valores dos CCM medidos pelos indicadores e transdutores:",
+    "Resposta": "Pois os transdutores eletrônicos estão sempre sob risco de sofrer panes."
 }];
 
 Questoes.IndicacaoCausa = [{
@@ -736,22 +814,25 @@ Questoes.IndicacaoCausa = [{
     "Causa": "Vazamento nas tubulações."
 }, {
     "Indicação": "Água baixa",
-    "Causa": "Problemas na válvula de alimentação."
+    "Causa": "Falha na válvula de alimentação."
 }, {
     "Indicação": "Água baixa",
     "Causa": "Defeito no sistema de controle de nível."
 }, {
+    "Indicação": "Água baixa",
+    "Causa": "Queda brusca da demanda de vapor."
+}, {
     "Indicação": "Água alta",
-    "Causa": "Flutuação brusca na demanda de vapor."
+    "Causa": "Aumento brusco da demanda de vapor."
 }, {
     "Indicação": "Água alta",
     "Causa": "Problemas no controle automático de alimentação."
 }, {
     "Indicação": "Água alta",
-    "Causa": "Problemas na válvula de alimentação."
+    "Causa": "Falha na válvula de alimentação."
 }, {
     "Indicação": "Pressão de vapor alta",
-    "Causa": "Queda na demanda de vapor."
+    "Causa": "Redução brusca do consumo de vapor."
 }, {
     "Indicação": "Pressão de vapor alta",
     "Causa": "Água de alimentação muito quente."
@@ -784,7 +865,7 @@ Questoes.IndicacaoCausa = [{
     "Causa": "Problemas técnicos no aquecedor."
 }, {
     "Indicação": "Pressão alta do óleo",
-    "Causa": "Ajuste incorreto na válvula."
+    "Causa": "Ajuste incorreto na válvula reguladora."
 }, {
     "Indicação": "Pressão alta do óleo",
     "Causa": "Obstruções no sistema de óleo."
@@ -831,7 +912,7 @@ Questoes.IndicacaoConsequencia = [{
     "Consequência": "Arrastamento de umidade para o superaquecedor."
 }, {
     "Indicação": "Pressão de vapor alta",
-    "Consequência": "Ativação da válvula de segurança."
+    "Consequência": "Ativações desnecessárias da válvula de segurança"
 }, {
     "Indicação": "Pressão de vapor alta",
     "Consequência": "Desperdício de vapor e água."
@@ -1057,6 +1138,9 @@ Questoes.Defeitos = [{
     "Causa": "Pouco excesso de ar",
     "Consequência": "Chaminé fria"
 }, {
+    "Causa": "Pouco excesso de ar",
+    "Consequência": "Super muito frio"
+}, {
     "Causa": "Água de alimentação muito quente",
     "Consequência": "Super muito frio"
 }, {
@@ -1259,7 +1343,7 @@ function preencher_todos_correlaciones(node, categoria) {
 
     node.resposta = [];
     for (let i=0; i<linhas.length; i++) {
-        if (i>=5) break;
+        if (i>=15) break;
         let linha = linhas[i];
 
         let item = linha[headers[0]], par = linha[headers[1]];
@@ -1292,7 +1376,7 @@ function preencher_todos_prelim_ope(node) {
     let listaFrases = node.querySelector(".lista-frases");
 
     for (let i=0; i<linhas.length; i++) {
-        if (i>=10) break;
+        if (i>=15) break;
         let linha = linhas[i];
         let acao = linha["Ação"], tipo = linha["Tipo"];
 
@@ -1322,7 +1406,7 @@ function preencher_todos_VF(node) {
     let listaFrases = node.querySelector(".lista-frases");
 
     for (let i=0; i<linhas.length; i++) {
-        if (i>=10) break;
+        if (i>=40) break;
         let linha = linhas[i];
         let acao = linha["Enunciado"], tipo = linha["Valor lógico"], exp = linha["Explicação"];
 
@@ -1418,7 +1502,7 @@ Borda preta - Marca a resposta certa se você errou.<br/>
         <button class="btn btn-mostrar" onclick="mostrar_resposta(this)">Mostrar resposta</button>
 
         <script>
-            var NUMERO_CITES = 5;
+            var NUMERO_CITES = 20;
             multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_CITES);
         </script>
     </div>
@@ -1458,7 +1542,7 @@ Borda preta - Marca a resposta certa se você errou.<br/>
 
         <div class="comentario hidden">{Comentário}</div>
         <script>
-            var NUMERO_ME = 6;
+            var NUMERO_ME = 10;
             multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_ME);
         </script>
     </div>
@@ -1510,7 +1594,7 @@ Borda preta - Marca a resposta certa se você errou.<br/>
         <button class="btn btn-mostrar" onclick="mostrar_resposta(this)">Mostrar resposta</button>
 
         <script>
-            var NUMERO_PERGUNTAS = 4;
+            var NUMERO_PERGUNTAS = 10;
             multiplicar_questao(document.currentScript.closest(".questao"), NUMERO_PERGUNTAS);
         </script>
     </div>
