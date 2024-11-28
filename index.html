@@ -24,6 +24,10 @@
 var Questoes = [];
 
 Questoes.VerdadeiroOuFalso = [{
+    "Enunciado": "Antes de iniciar a barrela é imprescindível fechar a válvula protetora do super.",
+    "Valor lógico": "F",
+    "Explicação": "Durante a barrela a válvula de proteção do super permanece sempre aberta."
+}, {
     "Enunciado": "A caldeira começa queimando óleo pesado, e depois troca para óleo diesel.",
     "Valor lógico": "F",
     "Explicação": "Ela começa queimando diesel, e depois troca para óleo pesado."
@@ -130,7 +134,7 @@ Questoes.VerdadeiroOuFalso = [{
 }, {
     "Enunciado": "As válvulas de segurança devem estar ajustadas para pressão igual ou superior à Pressão Máxima de Trabalho Admissível (PMTA) da caldeira.",
     "Valor lógico": "F",
-    "Explicação": "Devem estar ajustadas para pressão superior. Caso a pressão seja igual, há a possibilidade de serem consideradas inexistentes."
+    "Explicação": "Devem estar ajustadas para pressão inferior. Caso a pressão seja igual, há a possibilidade de serem consideradas inexistentes."
 }, {
     "Enunciado": "Em caso de vazamentos na caldeira, devem-se suspender os tratamentos da água para evitar a remoção de incrustações tampando os vazamentos.",
     "Valor lógico": "F",
@@ -1519,7 +1523,7 @@ Borda preta - Marca a resposta certa se você errou.<br/>
         
             for (let i=0; i<cites.length; i++) {
                 if (i >= 30) break;
-                
+
                 preencher_cite(cites[i], questoes[i]);
             }
         }
